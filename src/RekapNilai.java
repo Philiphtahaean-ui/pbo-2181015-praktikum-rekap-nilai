@@ -7,6 +7,7 @@ public class RekapNilai {
         Scanner input = new Scanner(System.in);
 
         int jumlah = 0;
+        double total = 0;
         int nilai;
 
         System.out.println("===== REKAP NILAI KELAS =====");
@@ -49,10 +50,20 @@ public class RekapNilai {
 
             System.out.println("  Grade " + grade + " — " + keterangan);
 
+            total += nilai;
             jumlah++;
         } while (nilai != SELESAI);
 
         System.out.println();
         System.out.println("Nilai sah   : " + jumlah);
+
+        if (jumlah > 0) {
+            double rata = total / jumlah;
+            String status = rata >= 60 ? "LULUS" : "TIDAK LULUS";
+            System.out.println("Rata-rata   : " + String.format("%.2f", rata));
+            System.out.println("Status      : " + status);
+        } else {
+            System.out.println("Tidak ada nilai sah, rata-rata tidak dihitung.");
+        }
     }
 }
